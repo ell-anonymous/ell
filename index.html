@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apin — Ultra Premium Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+    border-radius:20px;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    overflow:hidden;
+}
+
+.orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.25;
+    animation:float 8s ease-in-out infinite;
+}
+
+.orb1{
+    width:500px;
+    height:500px;
+    background:#2563eb;
+    top:-150px;
+    left:-100px;
+}
+
+.orb2{
+    width:400px;
+    height:400px;
+    background:#60a5fa;
+    right:-100px;
+    bottom:-100px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(30px);
+    }
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    background:rgba(0,0,0,.4);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+}
+
+.gradient{
+    background:linear-gradient(to right,#fff,#60a5fa);
+
+    background-clip:text;
+    -webkit-background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    transition:.3s;
+    font-size:15px;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* MOBILE MENU */
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.mobile-menu{
+    position:fixed;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    background:rgba(15,15,15,.95);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:25px;
+    padding:25px;
+    display:none;
+    flex-direction:column;
+    gap:20px;
+    z-index:999;
+}
+
+.mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:140px 7% 100px;
+}
+
+.hero img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:30px;
+    border:3px solid rgba(255,255,255,.08);
+    box-shadow:0 0 70px rgba(37,99,235,.4);
+}
+
+.hero h1{
+    font-size:clamp(48px,10vw,120px);
+    line-height:1;
+    letter-spacing:-4px;
+}
+
+.hero p{
+    max-width:700px;
+    margin-top:25px;
+    color:#9ca3af;
+    line-height:1.9;
+    font-size:17px;
+}
+
+.buttons{
+    display:flex;
+    gap:16px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn{
+    padding:15px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:.35s;
+    font-size:15px;
+}
+
+.btn-primary{
+    background:white;
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:white;
+    color:black;
+}
+
+/* MARQUEE */
+
+.marquee{
+    width:100%;
+    overflow:hidden;
+    padding:22px 0;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    background:rgba(255,255,255,.03);
+    white-space:nowrap;
+    position:relative;
+}
+
+.marquee-track{
+    display:flex;
+    width:max-content;
+    animation:marquee 18s linear infinite;
+}
+
+.marquee-content{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    padding-right:60px;
+    font-size:22px;
+    color:#7c7c7c;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* SECTION */
+
+section{
+    padding:110px 7%;
+}
+
+.section-title{
+    font-size:clamp(40px,7vw,80px);
+    text-align:center;
+    margin-bottom:20px;
+    letter-spacing:-3px;
+}
+
+.section-sub{
+    text-align:center;
+    color:#9ca3af;
+    max-width:700px;
+    margin:auto auto 70px;
+    line-height:1.8;
+}
+
+/* ABOUT */
+
+.about{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:45px;
+    padding:40px;
+    border-radius:35px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+}
+
+.about img{
+    width:100%;
+    border-radius:25px;
+}
+
+.about h3{
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.about p{
+    color:#b3b3b3;
+    line-height:2;
+    margin-bottom:18px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.skill{
+    padding:12px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* ACCOUNT */
+
+.account{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.account-card{
+    padding:35px;
+    border-radius:30px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.05);
+    transition:.35s;
+}
+
+.account-card:hover{
+    transform:translateY(-8px);
+}
+
+.account-card h3{
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.account-card p{
+    color:#9ca3af;
+    margin-bottom:20px;
+}
+
+.account-card a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.project{
+    overflow:hidden;
+    border-radius:30px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.05);
+    transition:.35s;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+}
+
+.project img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.project-content{
+    padding:28px;
+}
+
+.project-content h3{
+    margin-bottom:14px;
+}
+
+.project-content p{
+    color:#9ca3af;
+    line-height:1.8;
+}
+
+/* CONTACT */
+
+.contact{
+    max-width:900px;
+    margin:auto;
+    padding:50px;
+    border-radius:35px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.05);
+    text-align:center;
+}
+
+.contact p{
+    color:#aaa;
+    line-height:1.9;
+    margin-bottom:30px;
+}
+
+.socials{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    padding:14px 22px;
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.socials a:hover{
+    background:white;
+    color:black;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#666;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav ul{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    section{
+        padding:90px 20px;
+    }
+
+    .hero{
+        padding:130px 20px 90px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .about,
+    .contact{
+        padding:25px;
+    }
+
+    .project img{
+        height:200px;
+    }
+
+    .marquee-content{
+        font-size:16px;
+        gap:40px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+</div>
+
+<!-- NAV -->
+
+<nav>
+
+<div class="logo gradient">Apin.</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#account">Account</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+</nav>
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#account">Account</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero" id="home" data-aos="fade-up">
+
+<img src="foto-gw.jpg">
+
+<h1>
+Creative
+<span class="gradient">Developer</span>
+</h1>
+
+<p>
+Creative designer, editor, dan frontend developer
+yang suka desain cinematic, clean minimalis,
+dan modern aesthetic ala Apple.
+</p>
+
+<div class="buttons">
+
+<a href="https://instagram.com/aelfinaell_" target="_blank" class="btn btn-primary">
+Instagram
+</a>
+
+<a href="#projects" class="btn btn-secondary">
+My Projects
+</a>
+
+</div>
+
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+<div class="marquee-content">
+<span>DESIGN</span>
+<span>•</span>
+<span>EDITING</span>
+<span>•</span>
+<span>FRONTEND</span>
+<span>•</span>
+<span>UI/UX</span>
+<span>•</span>
+<span>APPLE STYLE</span>
+<span>•</span>
+<span>CINEMATIC</span>
+<span>•</span>
+<span>MODERN</span>
+<span>•</span>
+</div>
+
+<div class="marquee-content">
+<span>DESIGN</span>
+<span>•</span>
+<span>EDITING</span>
+<span>•</span>
+<span>FRONTEND</span>
+<span>•</span>
+<span>UI/UX</span>
+<span>•</span>
+<span>APPLE STYLE</span>
+<span>•</span>
+<span>CINEMATIC</span>
+<span>•</span>
+<span>MODERN</span>
+<span>•</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title gradient" data-aos="fade-up">
+About Me
+</h2>
+
+<p class="section-sub" data-aos="fade-up">
+Portfolio premium modern dengan visual cinematic aesthetic.
+</p>
+
+<div class="about" data-aos="zoom-in">
+
+<img src="foto-gw.jpg">
+
+<div>
+
+<h3>Hi, Gw Apin</h3>
+
+<p>
+Gw suka bikin website modern, editing cinematic,
+dan personal branding dengan style clean minimalis.
+</p>
+
+<p>
+Sekarang gw fokus ngembangin skill frontend,
+visual editing, dan portfolio aesthetic.
+</p>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">UI/UX</div>
+<div class="skill">Editing</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ACCOUNT -->
+
+<section id="account">
+
+<h2 class="section-title gradient" data-aos="fade-up">
+My Account
+</h2>
+
+<div class="account">
+
+<div class="account-card" data-aos="fade-up">
+
+<h3>Instagram</h3>
+
+<p>
+Personal branding dan aesthetic content.
+</p>
+
+<a href="https://instagram.com/aelfinaell_" target="_blank">
+@aelfinaell_
+</a>
+
+</div>
+
+<div class="account-card" data-aos="fade-up" data-aos-delay="100">
+
+<h3>Email</h3>
+
+<p>
+Hubungi gw buat collab atau project.
+</p>
+
+<a href="mailto:alfin2007K@gmail.com">
+alfin2007K@gmail.com
+</a>
+
+</div>
+
+<div class="account-card" data-aos="fade-up" data-aos-delay="200">
+
+<h3>TikTok</h3>
+
+<p>
+Content cinematic dan visual editing.
+</p>
+
+<a href="https://tiktok.com/@naelsupboy" target="_blank">
+@naelsupboy
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title gradient" data-aos="fade-up">
+Projects
+</h2>
+
+<div class="projects">
+
+<div class="project" data-aos="fade-up">
+
+<img src="project1.jpg">
+
+<div class="project-content">
+
+<h3>Portfolio Website</h3>
+
+<p>
+Website dark mode premium dengan smooth visual aesthetic.
+</p>
+
+</div>
+
+</div>
+
+<div class="project" data-aos="fade-up" data-aos-delay="100">
+
+<img src="project2.jpg">
+
+<div class="project-content">
+
+<h3>UI Design</h3>
+
+<p>
+Design clean modern dengan style minimalis premium.
+</p>
+
+</div>
+
+</div>
+
+<div class="project" data-aos="fade-up" data-aos-delay="200">
+
+<img src="project3.jpg">
+
+<div class="project-content">
+
+<h3>Video Editing</h3>
+
+<p>
+Visual cinematic untuk branding social media.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="section-title gradient" data-aos="fade-up">
+Contact
+</h2>
+
+<div class="contact" data-aos="zoom-in">
+
+<p>
+Kalau mau collab atau bikin project bareng,
+langsung hubungi gw.
+</p>
+
+<div class="socials">
+
+<a href="https://instagram.com/aelfinaell_" target="_blank">
+Instagram
+</a>
+
+<a href="mailto:alfin2007K@gmail.com">
+Email
+</a>
+
+<a href="https://tiktok.com/@naelsupboy" target="_blank">
+TikTok
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Apin Portfolio
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+    duration:1000,
+    once:true
+});
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.onclick = ()=>{
+
+    if(mobileMenu.style.display === "flex"){
+
+        mobileMenu.style.display = "none";
+
+    }else{
+
+        mobileMenu.style.display = "flex";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
